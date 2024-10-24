@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Evaluation" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "from" INTEGER NOT NULL,
+    "to" INTEGER NOT NULL,
+    CONSTRAINT "Evaluation_from_fkey" FOREIGN KEY ("from") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Evaluation_to_fkey" FOREIGN KEY ("to") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);

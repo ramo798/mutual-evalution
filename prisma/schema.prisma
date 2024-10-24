@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String
+  name  String
+  roleId Int @default(1)
+  role   Role   @relation(fields: [roleId], references: [id])
+  evaluationsFrom Evaluation[] @relation("EvaluationsFrom")
+  evaluationsTo   Evaluation[] @relation("EvaluationsTo")
+}
+
+model Evaluation {
+  id    Int     @id @default(autoincrement())
+  from Int
+  to  Int
+  point Int
+  fromUser User @relation("EvaluationsFrom", fields: [from], references: [id])
+  toUser   User @relation("EvaluationsTo", fields: [to], references: [id])
+}
+model Role {
+  id    Int     @id @default(autoincrement())
+  name  String
+  rate Float
+  havePoint Int @default(15)
+  users User[]
+}
