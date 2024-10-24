@@ -31,9 +31,9 @@ export default function Index() {
   return (
     <>
       <div className="p-5">
-        <button className="btn">
-          <Link to="/">戻る</Link>
-        </button>
+        <Link to="/">
+          <button className="btn">戻る</button>
+        </Link>
         <table className="table">
           <thead>
             <tr>

@@ -39,9 +39,9 @@ export default function Index() {
   return (
     <>
       <div className="p-5">
-        <button className="btn mb-10">
-          <Link to="/">戻る</Link>
-        </button>
+        <Link to="/">
+          <button className="btn mb-10">戻る</button>
+        </Link>
         <h1 className="mb-10">{targetUser?.name}の評価</h1>
         <h2 className="mb-10">評価合計 {totalPoint}点</h2>
         {evaluations.map((evaluation) => (
